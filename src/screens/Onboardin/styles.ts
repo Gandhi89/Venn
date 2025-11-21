@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     flexGrow: 1
   },
   root: {
-    marginTop: 24
+    marginTop: 16
   },
   rootLandscape: {
     paddingHorizontal: 30,
@@ -25,7 +25,6 @@ export const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: '600',
     color: colors.black,
-    marginBottom: 12,
     marginLeft: 10,
     alignSelf: 'center',
     paddingTop: 24
@@ -35,9 +34,21 @@ export const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 14,
     color: colors.black,
-    fontWeight: '400'
+    fontWeight: '400',
+    marginTop: 16
+  },
+  charCount: {
+    alignSelf: 'flex-end',
+    marginRight: 10,
+    fontSize: 12,
+    color: colors.slate,
+    marginTop: -20
   },
   button: {
+    marginTop: 16,
     marginHorizontal: 10
+  },
+  iconContainer: {
+    marginLeft: 4 
   }
 })
