@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     borderWidth: 0,
     borderRadius: 10,
     width: '100%',
-    minHeight: 40
+    minHeight: 48
   },
   titleStyle: {
     fontWeight: '400',
