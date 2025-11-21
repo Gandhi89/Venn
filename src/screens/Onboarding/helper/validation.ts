@@ -2,8 +2,8 @@ import { validateCorporationNumber } from '@/src/api/corporations';
 import * as Yup from 'yup';
 
 export const onboardingValidationSchema = Yup.object({
-  firstName: Yup.string().required('First name is required'),
-  lastName: Yup.string().required('Last name is required'),
+  firstName: Yup.string().trim().required('First name is required'),
+  lastName: Yup.string().trim().required('Last name is required'),
   phoneNumber: Yup.string()
     .required('Phone number is required')
     .matches(/^\+1\d{10}$/, 'Enter a valid Canadian phone number starting with country code +1'),

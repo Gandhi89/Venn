@@ -142,7 +142,7 @@ export const OnboardingScreen = () => {
               }}
               iconRight
               iconContainerStyle={styles.iconContainer}
-              style={styles.button}
+              containerStyle={styles.buttonContainer}
               loading={isSubmitting}
               disabled={isSubmitting}
               testID="submitButton"

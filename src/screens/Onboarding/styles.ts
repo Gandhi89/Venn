@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
     color: colors.slate,
     marginTop: -20
   },
-  button: {
+  buttonContainer: {
     marginTop: 16,
     marginHorizontal: 10
   },
