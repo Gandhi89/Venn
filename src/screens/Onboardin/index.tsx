@@ -1,9 +1,11 @@
 import { validateCorporationNumber } from '@/src/api/corporations';
+import { submitProfileDetails } from '@/src/api/profile';
 import { VennButton } from '@/src/components/Button';
 import { VennTextInput } from '@/src/components/TextInput';
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import { Text, View, useWindowDimensions } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
+import Toast from 'react-native-toast-message';
 import * as Yup from 'yup';
 import { styles } from './styles';
 
@@ -51,8 +53,36 @@ export const OnboardingScreen = () => {
       }),
   });
 
-  const handleSubmit = (values: OnboardingFormValues) => {
-    console.log('Form submitted:', values);
+  const submitForm = async (
+    values: OnboardingFormValues,
+    helpers: FormikHelpers<OnboardingFormValues>
+  ) => {
+    const { setSubmitting, setStatus } = helpers;
+    setStatus(undefined);
+
+    try {
+      await submitProfileDetails({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        corporationNumber: values.corporateNumber,
+        phone: values.phoneNumber,
+      });
+
+      Toast.show({
+        type: 'success',
+        text1: 'Success ✅',
+        text2: 'Profile details saved.'
+      });
+      
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : 'Unable to submit form. Please try again.';
+      setStatus({ submitError: message });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -62,10 +92,19 @@ export const OnboardingScreen = () => {
       
       <Formik
         initialValues={initialValues}
-        onSubmit={handleSubmit}
+        onSubmit={submitForm}
         validationSchema={validationSchema}
       >
-        {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => (
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          touched,
+          isSubmitting,
+          status,
+        }) => (
           <View style={[styles.root, isLandscape && styles.rootLandscape]}>
             <Text style={styles.inputHeader}>First Name</Text>
             <VennTextInput
@@ -110,6 +149,10 @@ export const OnboardingScreen = () => {
             />
             <Text style={styles.charCount}>{values.corporateNumber.length}/9</Text>
 
+            {status?.submitError ? (
+              <Text style={styles.submitError}>{status.submitError}</Text>
+            ) : null}            
+
             <VennButton
               title="Submit"
               onPress={() => handleSubmit()}
@@ -122,6 +165,8 @@ export const OnboardingScreen = () => {
               iconRight
               iconContainerStyle={styles.iconContainer}
               style={styles.button}
+              loading={isSubmitting}
+              disabled={isSubmitting}
             />
           </View>
         )}

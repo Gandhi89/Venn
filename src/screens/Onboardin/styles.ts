@@ -50,5 +50,12 @@ export const styles = StyleSheet.create({
   },
   iconContainer: {
     marginLeft: 4 
+  },
+  submitError: {
+    color: colors.error,
+    marginTop: 16,
+    marginBottom: -8,
+    marginLeft: 10,
+    alignSelf: 'center'
   }
 })
