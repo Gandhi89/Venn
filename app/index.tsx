@@ -1,4 +1,4 @@
-import { OnboardingScreen } from "@/src/screens/Onboardin";
+import { OnboardingScreen } from "@/src/screens/Onboarding";
 
 export default function Index() {
   return (
