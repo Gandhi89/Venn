@@ -1,9 +1,13 @@
 import { Button } from '@rneui/themed';
 import { ComponentProps } from 'react';
+import { styles } from './style';
 
 
 export const VennButton = (props: ComponentProps<typeof Button>) => {
   return (
-    <Button {...props} />    
+    <Button
+      buttonStyle={styles.primaryButton}
+      {...props}
+    />
   )
 }
