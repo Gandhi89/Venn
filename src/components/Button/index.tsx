@@ -7,6 +7,7 @@ export const VennButton = (props: ComponentProps<typeof Button>) => {
   return (
     <Button
       buttonStyle={styles.primaryButton}
+      titleStyle={styles.titleStyle}
       {...props}
     />
   )

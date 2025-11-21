@@ -9,5 +9,9 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     width: '100%',
     minHeight: 40
+  },
+  titleStyle: {
+    fontWeight: '400',
+    fontSize: 14
   }
 });

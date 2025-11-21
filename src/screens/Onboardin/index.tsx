@@ -1,0 +1,5 @@
+export const OnboardingScreen = () => {
+  return (
+    <></>
+  );
+}
