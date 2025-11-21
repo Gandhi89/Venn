@@ -49,7 +49,6 @@ export const OnboardingScreen = () => {
       });
 
       resetForm();
-      
     } catch (error) {
       const message =
         error instanceof Error
@@ -90,6 +89,7 @@ export const OnboardingScreen = () => {
               autoCapitalize="words"
               maxLength={50}
               errorMessage={touched.firstName ? errors.firstName : undefined}
+              testID="firstNameInput"
             />
             <Text style={styles.charCount}>{values.firstName.length}/50</Text>
 
@@ -101,6 +101,7 @@ export const OnboardingScreen = () => {
               autoCapitalize="words"
               maxLength={50}
               errorMessage={touched.lastName ? errors.lastName : undefined}
+              testID="lastNameInput"
             />
             <Text style={styles.charCount}>{values.lastName.length}/50</Text>
 
@@ -111,6 +112,7 @@ export const OnboardingScreen = () => {
               onChangeText={handleChange('phoneNumber')}
               onBlur={handleBlur('phoneNumber')}
               errorMessage={touched.phoneNumber ? errors.phoneNumber : undefined}
+              testID="phoneNumberInput"
             />
 
             <Text style={styles.inputHeader}>Corporation Number</Text>
@@ -122,8 +124,8 @@ export const OnboardingScreen = () => {
               keyboardType="number-pad"
               maxLength={9}
               errorMessage={touched.corporateNumber ? errors.corporateNumber : undefined}
+              testID="corporateNumberInput"
             />
-            <Text style={styles.charCount}>{values.corporateNumber.length}/9</Text>
 
             {status?.submitError ? (
               <Text style={styles.submitError}>{status.submitError}</Text>
@@ -143,6 +145,7 @@ export const OnboardingScreen = () => {
               style={styles.button}
               loading={isSubmitting}
               disabled={isSubmitting}
+              testID="submitButton"
             />
           </View>
         )}
